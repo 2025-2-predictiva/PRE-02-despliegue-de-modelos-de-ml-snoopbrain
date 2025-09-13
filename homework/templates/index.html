@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏠 House Price Predictor</h1>
+            <p>Predice el precio de tu apartamento o casa</p>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <div class="form-container">
+                    <form id="predictionForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="bedrooms">Habitaciones:</label>
+                                <input type="number" id="bedrooms" name="bedrooms" min="1" max="10" value="3" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bathrooms">Baños:</label>
+                                <input type="number" id="bathrooms" name="bathrooms" min="1" max="10" step="0.25" value="2" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="floors">Pisos:</label>
+                                <input type="number" id="floors" name="floors" min="1" max="5" step="0.5" value="1" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="waterfront">Vista al Agua:</label>
+                                <select id="waterfront" name="waterfront" required>
+                                    <option value="0">No</option>
+                                    <option value="1" selected>Sí</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="condition">Condición:</label>
+                                <select id="condition" name="condition" required>
+                                    <option value="1">1 - Muy Malo</option>
+                                    <option value="2">2 - Malo</option>
+                                    <option value="3" selected>3 - Regular</option>
+                                    <option value="4">4 - Bueno</option>
+                                    <option value="5">5 - Excelente</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="sqft_living">Área Habitable (sqft):</label>
+                                <input type="number" id="sqft_living" name="sqft_living" min="100" max="20000" value="1800" required>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="sqft_lot">Área del Lote (sqft):</label>
+                                <input type="number" id="sqft_lot" name="sqft_lot" min="100" max="100000" value="2200" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="predict-btn">🔮 Predecir Precio</button>
+                    </form>
+                </div>
+
+                <div class="result-container" id="resultContainer" style="display: none;">
+                    <h2>💰 Predicción de Precio</h2>
+                    <div class="prediction-result" id="predictionResult">
+                        <!-- El resultado se mostrará aquí -->
+                    </div>
+                    <button class="reset-btn" onclick="resetForm()">🔄 Nueva Predicción</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Machine Learning | Modelo de Regresión Lineal</p>
+        </footer>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

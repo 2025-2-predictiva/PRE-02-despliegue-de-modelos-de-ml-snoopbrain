@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Estimator</title>
+    <style>
+        /* Estilos generales del cuerpo */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Contenedor principal */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #4A5568; /* Un gris oscuro */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        /* Contenido principal y formulario */
+        main {
+            padding: 25px;
+        }
+
+        p.intro {
+            font-size: 1.1em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* Estilo para los grupos de formulario (label + input) */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* Estilo para los campos de texto y número */
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* Estilo para los grupos de radio buttons */
+        .radio-group label {
+            font-weight: normal;
+            display: inline-block;
+            margin-right: 15px;
+        }
+        
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        /* Botón de envío */
+        .submit-btn {
+            display: block;
+            width: 120px;
+            padding: 12px;
+            background-color: #E2E8F0; /* Gris claro */
+            color: #2D3748;
+            border: 1px solid #CBD5E0;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 auto 25px auto; /* Centrar el botón */
+            text-align: center;
+        }
+        
+        .submit-btn:hover {
+            background-color: #CBD5E0;
+        }
+
+        /* Sección del resultado */
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .result span {
+            font-weight: bold;
+            color: #4A5568;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>House Price Estimator</h1>
+        </header>
+
+        <main>
+            <p class="intro">Enter the details of the house you want to estimate the price for:</p>
+
+            <form action="#" method="post" onsubmit="return false;">
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                     <input type="submit" value="Submit" class="submit-btn">
+                </div>
+               
+                <div class="form-group">
+                    <label for="bedrooms">Bedrooms:</label>
+                    <input type="number" id="bedrooms" name="bedrooms" value="3">
+                </div>
+
+                <div class="form-group">
+                    <label for="bathrooms">Bathrooms:</label>
+                    <input type="number" id="bathrooms" name="bathrooms" value="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="living_space">Living Space (sqft):</label>
+                    <input type="number" id="living_space" name="living_space" value="1180">
+                </div>
+
+                <div class="form-group">
+                    <label for="lot_size">Lot size (sqft):</label>
+                    <input type="number" id="lot_size" name="lot_size" value="5650">
+                </div>
+
+                <div class="form-group">
+                    <label for="floors">Floors:</label>
+                    <input type="number" id="floors" name="floors" value="1">
+                </div>
+
+                <div class="form-group">
+                    <label>Waterfront:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="waterfront" value="yes" checked> Yes</label>
+                        <label><input type="radio" name="waterfront" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Condition:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="condition" value="1" checked> 1 - worst</label><br>
+                        <label><input type="radio" name="condition" value="2"> 2</label><br>
+                        <label><input type="radio" name="condition" value="3"> 3</label><br>
+                        <label><input type="radio" name="condition" value="4"> 4</label><br>
+                        <label><input type="radio" name="condition" value="5"> 5 - best</label>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="result">
+                Estimated Price: <br>
+                <span>None</span>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
