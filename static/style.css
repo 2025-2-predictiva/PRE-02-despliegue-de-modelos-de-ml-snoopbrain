@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Mejorar la apariencia de los inputs en móviles */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Estilo para select en móviles */
+select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.predict-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.predict-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.predict-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+/* Mejorar la experiencia táctil */
+.predict-btn, .reset-btn, input, select {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.predict-btn:active {
+    transform: translateY(0);
+}
+
+.result-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-container h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.prediction-result {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 20px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.reset-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.reset-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+footer {
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    margin-top: 40px;
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Mejorar el loading en móviles */
+@media (max-width: 768px) {
+    .loading {
+        width: 18px;
+        height: 18px;
+        border-width: 2px;
+        margin-right: 8px;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 90%;
+        padding: 15px;
+    }
+    
+    .form-container, .result-container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    header p {
+        font-size: 1.1rem;
+    }
+    
+    .form-container, .result-container {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    input, select {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+    
+    .predict-btn {
+        padding: 15px;
+        font-size: 1.1rem;
+        margin-top: 15px;
+    }
+    
+    .prediction-result {
+        font-size: 2rem;
+        padding: 25px 20px;
+    }
+    
+    .result-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .reset-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .form-container, .result-container {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    label {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+    }
+    
+    input, select {
+        padding: 10px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    
+    .predict-btn {
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    
+    .prediction-result {
+        font-size: 1.8rem;
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+    
+    .result-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+    
+    .reset-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+    }
+    
+    footer {
+        font-size: 0.9rem;
+        margin-top: 30px;
+    }
+}
+
+/* Mejoras adicionales para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 85%;
+    }
+    
+    .form-container, .result-container {
+        padding: 35px;
+    }
+    
+    .form-group {
+        margin-bottom: 22px;
+    }
+    
+    input, select {
+        padding: 14px;
+    }
+    
+    .predict-btn {
+        padding: 16px;
+    }
+}
+
+/* Mejoras para pantallas muy grandes */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 900px;
+    }
+    
+    .form-container, .result-container {
+        padding: 50px;
+    }
+    
+    header h1 {
+        font-size: 3.5rem;
+    }
+    
+    header p {
+        font-size: 1.3rem;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        padding: 5px;
+    }
+    
+    header {
+        margin-bottom: 20px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .form-container, .result-container {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .prediction-result {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mejorar contraste para usuarios con problemas de visión */
+@media (prefers-contrast: high) {
+    .form-container, .result-container {
+        border: 2px solid #000;
+    }
+    
+    input, select {
+        border: 2px solid #000;
+    }
+    
+    .predict-btn, .reset-btn {
+        border: 2px solid #000;
+    }
+}
